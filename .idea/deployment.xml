@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="10.10.28.41">
+    <serverData>
+      <paths name="10.10.20.171">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/pros/cbert_aug" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="10.10.28.41">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/pros/cbert_aug" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

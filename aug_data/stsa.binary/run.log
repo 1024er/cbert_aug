@@ -1,0 +1,103 @@
+/home/xgg/anaconda3/bin/python /home/xgg/pros/cbert_aug/aug_dataset.py
+Better speed can be achieved with apex installed from https://www.github.com/nvidia/apex.
+/home/xgg/anaconda3/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Namespace(bert_model='bert-base-uncased', data_dir='datasets', do_lower_case=False, learning_rate=5e-05, max_seq_length=64, num_train_epochs=6.0, output_dir='aug_data', seed=42, task_name='stsa.binary', train_batch_size=32, warmup_proportion=0.1)
+03/08/2019 21:02:11 - INFO - pytorch_pretrained_bert.modeling -   Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 512,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "type_vocab_size": 2,
+  "vocab_size": 30522
+}
+
+03/08/2019 21:02:14 - INFO - pytorch_pretrained_bert.modeling -   Weights from pretrained model not used in BertForMaskedLM: ['cls.seq_relationship.weight', 'cls.seq_relationship.bias']
+03/08/2019 21:02:15 - INFO - __main__ -   *** Example ***
+03/08/2019 21:02:15 - INFO - __main__ -   guid: train-1
+03/08/2019 21:02:15 - INFO - __main__ -   tokens: [CLS] an un ##int ##ent ##ional ##ly surreal kid ' s picture . . . in which actors in bad bear suits en ##act a sort of inter - species parody of a vh1 behind the music episode . [SEP]
+03/08/2019 21:02:15 - INFO - __main__ -   init_ids: 101 2019 4895 18447 4765 19301 2135 16524 4845 1005 1055 3861 1012 1012 1012 1999 2029 5889 1999 2919 4562 11072 4372 18908 1037 4066 1997 6970 1011 2427 12354 1997 1037 26365 2369 1996 2189 2792 1012 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+03/08/2019 21:02:15 - INFO - __main__ -   input_ids: 101 2019 4895 18447 4765 103 2135 103 103 1005 1055 3861 1012 1012 1012 6970 103 5889 1999 2919 4562 11072 4372 18908 1037 4066 1997 6970 1011 2427 12354 1997 1037 26365 2369 1996 2189 26365 1012 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+03/08/2019 21:02:15 - INFO - __main__ -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+03/08/2019 21:02:15 - INFO - __main__ -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+03/08/2019 21:02:15 - INFO - __main__ -   masked_lm_labels: -1 -1 -1 -1 -1 19301 -1 16524 4845 -1 -1 -1 -1 -1 -1 1999 2029 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 2792 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+03/08/2019 21:02:15 - INFO - __main__ -   *** Example ***
+03/08/2019 21:02:15 - INFO - __main__ -   guid: train-2
+03/08/2019 21:02:15 - INFO - __main__ -   tokens: [CLS] the kind of film that leaves you scratching your head in amazement over the fact that so many talented people could participate in such an ill - advised and poorly executed idea . [SEP]
+03/08/2019 21:02:15 - INFO - __main__ -   init_ids: 101 1996 2785 1997 2143 2008 3727 2017 20291 2115 2132 1999 21606 2058 1996 2755 2008 2061 2116 10904 2111 2071 5589 1999 2107 2019 5665 1011 9449 1998 9996 6472 2801 1012 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+03/08/2019 21:02:15 - INFO - __main__ -   input_ids: 101 1996 2785 1997 2143 2008 3727 2017 20291 2115 2132 1999 103 103 1996 2755 2008 2061 2116 10904 103 2071 5589 1999 2107 2019 5665 1011 9449 6472 9996 103 2801 1012 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+03/08/2019 21:02:15 - INFO - __main__ -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+03/08/2019 21:02:15 - INFO - __main__ -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+03/08/2019 21:02:15 - INFO - __main__ -   masked_lm_labels: -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 21606 2058 -1 -1 -1 -1 -1 -1 2111 -1 -1 -1 -1 -1 -1 -1 -1 1998 -1 6472 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+03/08/2019 21:02:17 - INFO - __main__ -   ***** Running training *****
+03/08/2019 21:02:17 - INFO - __main__ -     Num examples = 6228
+03/08/2019 21:02:17 - INFO - __main__ -     Batch size = 32
+03/08/2019 21:02:17 - INFO - __main__ -     Num steps = 1167
+constract vocabulary based on frequency
+# train data: 6228
+# test  data: 692
+# vocab: 14830
+# class: 2
+Epoch:   0%|          | 0/6 [00:00<?, ?it/s]before augment best acc:0.800578
+avg_loss: 2.7279621171951294
+avg_loss: 2.595244951248169
+avg_loss: 2.626865839958191
+constract vocabulary based on frequency
+# train data: 18613
+# test  data: 692
+# vocab: 17639
+# class: 2
+epoch 0 augment best acc:0.793353
+Epoch:  17%|█▋        | 1/6 [04:22<21:51, 262.37s/it]avg_loss: 1.199854292869568
+avg_loss: 1.1750281822681428
+avg_loss: 1.1697524082660675
+constract vocabulary based on frequency
+# train data: 18691
+# test  data: 692
+# vocab: 17694
+# class: 2
+Epoch:  33%|███▎      | 2/6 [09:19<18:38, 279.67s/it]epoch 1 augment best acc:0.807803
+avg_loss: 0.4066984289884567
+avg_loss: 0.4212127384543419
+avg_loss: 0.4228825390338898
+constract vocabulary based on frequency
+# train data: 18742
+# test  data: 692
+# vocab: 17793
+# class: 2
+Epoch:  50%|█████     | 3/6 [14:44<14:44, 294.70s/it]epoch 2 augment best acc:0.809249
+avg_loss: 0.14582043968141079
+avg_loss: 0.1362319701910019
+avg_loss: 0.15393256649374962
+constract vocabulary based on frequency
+# train data: 18690
+# test  data: 692
+# vocab: 17819
+# class: 2
+Epoch:  67%|██████▋   | 4/6 [20:21<10:10, 305.26s/it]epoch 3 augment best acc:0.806358
+avg_loss: 0.06510618031024933
+avg_loss: 0.07271562956273556
+avg_loss: 0.06607807904481888
+constract vocabulary based on frequency
+# train data: 18618
+# test  data: 692
+# vocab: 17798
+# class: 2
+epoch 4 augment best acc:0.802023
+Epoch:  83%|████████▎ | 5/6 [25:01<05:00, 300.36s/it]avg_loss: 0.04483885794878006
+avg_loss: 0.046800237521529196
+avg_loss: 0.046726834438741205
+constract vocabulary based on frequency
+# train data: 18682
+# test  data: 692
+# vocab: 17758
+# class: 2
+epoch 5 augment best acc:0.825145
+Epoch: 100%|██████████| 6/6 [30:26<00:00, 304.43s/it]
+
+Process finished with exit code 0

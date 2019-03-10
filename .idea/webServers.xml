@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="d5971fdf-fbfc-44df-83e3-9d43e9d4b40d" name="10.10.28.41" url="http://10.10.28.41">
+        <fileTransfer host="10.10.28.41" port="22" rootFolder="/home/xgg" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="628486e8-b1b0-4371-9369-582bd9cc9784" name="10.10.20.171" url="http://10.10.20.171">
+        <fileTransfer host="10.10.20.171" port="22" rootFolder="/home/xgg" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
