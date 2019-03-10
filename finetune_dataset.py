@@ -289,7 +289,7 @@ def run_aug(args, save_every_epoch=False):
         "subj": AugProcessor,
     }
 
-    task_name = args.task_name.lower()
+    task_name = args.task_name
     if task_name not in processors:
         raise ValueError("Task not found: %s" % (task_name))
     args.data_dir = os.path.join(args.data_dir, task_name)
