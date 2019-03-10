@@ -100,7 +100,7 @@ class AugProcessor(DataProcessor):
             return ["0", "1"]
         elif name in ['stsa.fine']:
             return ["0", "1", "2", "3", "4"]
-        elif name in ['trec']:
+        elif name in ['TREC']:
             return ["0", "1", "2", "3", "4", "5"]
 
     def _create_examples(self, lines, set_type):
@@ -137,10 +137,10 @@ def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer
         if len(tokens_a) > max_seq_length - 2:
             tokens_a = tokens_a[0:(max_seq_length - 2)]
 
-        # 由于是CMLM，所以需要用标签
+        # Due to we use conditional bert, we need to place label information in segment_ids
         tokens = []
         segment_ids = []
-        # 是不是可以去掉[CLS]和[SEP]
+        # is [CLS]和[SEP] needed ？
         tokens.append("[CLS]")
         segment_ids.append(segment_id)
         for token in tokens_a:
@@ -281,7 +281,7 @@ def main():
 def run_aug(args, save_every_epoch=False):
     processors = {
         # you can your processor here
-        "trec": AugProcessor,
+        "TREC": AugProcessor,
         "stsa.fine": AugProcessor,
         "stsa.binary": AugProcessor,
         "mpqa": AugProcessor,
@@ -317,7 +317,7 @@ def run_aug(args, save_every_epoch=False):
     if task_name == 'stsa.fine':
         model.bert.embeddings.token_type_embeddings = torch.nn.Embedding(5, 768)
         model.bert.embeddings.token_type_embeddings.weight.data.normal_(mean=0.0, std=0.02)
-    elif task_name == 'trec':
+    elif task_name == 'TREC':
         model.bert.embeddings.token_type_embeddings = torch.nn.Embedding(6, 768)
         model.bert.embeddings.token_type_embeddings.weight.data.normal_(mean=0.0, std=0.02)
 
