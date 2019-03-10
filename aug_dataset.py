@@ -137,10 +137,10 @@ def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer
         if len(tokens_a) > max_seq_length - 2:
             tokens_a = tokens_a[0:(max_seq_length - 2)]
 
-        # 由于是CMLM，所以需要用标签
+        # Due to we use conditional bert, we need to place label information in segment_ids
         tokens = []
         segment_ids = []
-        # 是不是可以去掉[CLS]和[SEP]
+        # is [CLS]和[SEP] needed ？
         tokens.append("[CLS]")
         segment_ids.append(segment_id)
         for token in tokens_a:
@@ -289,7 +289,7 @@ def run_aug(args, save_every_epoch=False):
         "subj": AugProcessor,
     }
 
-    task_name = args.task_name.lower()
+    task_name = args.task_name
     if task_name not in processors:
         raise ValueError("Task not found: %s" % (task_name))
     args.data_dir = os.path.join(args.data_dir, task_name)
