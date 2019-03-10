@@ -281,7 +281,7 @@ def main():
 def run_aug(args, save_every_epoch=False):
     processors = {
         # you can your processor here
-        "trec": AugProcessor,
+        "TREC": AugProcessor,
         "stsa.fine": AugProcessor,
         "stsa.binary": AugProcessor,
         "mpqa": AugProcessor,
