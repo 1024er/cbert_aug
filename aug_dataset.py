@@ -100,7 +100,7 @@ class AugProcessor(DataProcessor):
             return ["0", "1"]
         elif name in ['stsa.fine']:
             return ["0", "1", "2", "3", "4"]
-        elif name in ['trec']:
+        elif name in ['TREC']:
             return ["0", "1", "2", "3", "4", "5"]
 
     def _create_examples(self, lines, set_type):
