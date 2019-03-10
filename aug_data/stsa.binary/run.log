@@ -1,4 +1,4 @@
-/home/xgg/anaconda3/bin/python /home/xgg/pros/cbert_aug/aug_dataset.py
+/home/xgg/anaconda3/bin/python /home/xgg/pros/cbert_aug/aug_dataset_wo_ft.py
 Better speed can be achieved with apex installed from https://www.github.com/nvidia/apex.
 /home/xgg/anaconda3/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
   from ._conv import register_converters as _register_converters
