@@ -1,0 +1,84 @@
+Namespace(bert_model='bert-base-uncased', data_dir='datasets', do_lower_case=False, gpu=4, learning_rate=5e-05, max_seq_length=64, num_train_epochs=9.0, output_dir='aug_data_2_6_4_1.0', sample_num=2, sample_ratio=6, seed=42, task_name='subj', temp=1.0, train_batch_size=32, warmup_proportion=0.1)
+10/25/2019 05:45:44 - WARNING - pytorch_pretrained_bert.tokenization -   The pre-trained model you are loading is an uncased model but you have set `do_lower_case` to False. We are setting `do_lower_case=True` for you but you may want to check this behavior.
+10/25/2019 05:45:47 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-vocab.txt from cache at /root/.pytorch_pretrained_bert/26bc1ad6c0ac742e9b52263248f6d0f00068293b33709fae12320c0e35ccfbbb.542ce4285a40d23a559526243235df47c5f75c197f04f37d1a0c124c32c9a084
+10/25/2019 05:45:47 - INFO - __main__ -   *** Example ***
+10/25/2019 05:45:47 - INFO - __main__ -   guid: train-1
+10/25/2019 05:45:47 - INFO - __main__ -   tokens: [CLS] laugh - out - loud lines , ad ##ora ##bly di ##ts ##y but heart ##felt performances , and sparkling , bitter ##sw ##eet dialogue that cuts to the chase of the modern girl ' s dilemma . [SEP]
+10/25/2019 05:45:47 - INFO - __main__ -   init_ids: 101 4756 1011 2041 1011 5189 3210 1010 4748 6525 6321 4487 3215 2100 2021 2540 26675 4616 1010 1998 16619 1010 8618 26760 15558 7982 2008 7659 2000 1996 5252 1997 1996 2715 2611 1005 1055 21883 1012 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/25/2019 05:45:47 - INFO - __main__ -   input_ids: 101 4756 1011 2041 1011 103 3210 103 103 6525 6321 4487 3215 2100 2021 7659 103 4616 1010 1998 16619 1010 8618 26760 15558 7982 2008 7659 2000 1996 5252 1997 1996 2715 2611 1005 1055 2715 1012 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/25/2019 05:45:47 - INFO - __main__ -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/25/2019 05:45:47 - INFO - __main__ -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/25/2019 05:45:47 - INFO - __main__ -   masked_lm_labels: -1 -1 -1 -1 -1 5189 -1 1010 4748 -1 -1 -1 -1 -1 -1 2540 26675 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 21883 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+10/25/2019 05:45:47 - INFO - __main__ -   *** Example ***
+10/25/2019 05:45:47 - INFO - __main__ -   guid: train-2
+10/25/2019 05:45:47 - INFO - __main__ -   tokens: [CLS] a love story played out against a backdrop of political and religious up ##hea ##val . [SEP]
+10/25/2019 05:45:47 - INFO - __main__ -   init_ids: 101 1037 2293 2466 2209 2041 2114 1037 18876 1997 2576 1998 3412 2039 20192 10175 1012 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/25/2019 05:45:47 - INFO - __main__ -   input_ids: 101 1037 2293 2466 2209 2041 2114 1037 18876 1997 2576 103 3412 2039 103 10175 1012 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/25/2019 05:45:47 - INFO - __main__ -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/25/2019 05:45:47 - INFO - __main__ -   segment_ids: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/25/2019 05:45:47 - INFO - __main__ -   masked_lm_labels: -1 -1 -1 2466 -1 -1 -1 -1 -1 -1 -1 1998 -1 -1 20192 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+10/25/2019 05:45:53 - INFO - __main__ -   ***** Running training *****
+10/25/2019 05:45:53 - INFO - __main__ -     Num examples = 8100
+10/25/2019 05:45:53 - INFO - __main__ -     Batch size = 32
+10/25/2019 05:45:53 - INFO - __main__ -     Num steps = 2278
+constract vocabulary based on frequency
+# train data: 8100
+# test  data: 900
+# vocab: 22752
+# class: 2
+before augment best acc:0.914
+Epoch:   0%|          | 0/9 [00:00<?, ?it/s]constract vocabulary based on frequency
+# train data: 24292
+# test  data: 900
+# vocab: 27288
+# class: 2
+epoch 0 augment best acc:0.913
+Epoch:  11%|█         | 1/9 [13:13<1:45:46, 793.31s/it]constract vocabulary based on frequency
+# train data: 24258
+# test  data: 900
+# vocab: 26400
+# class: 2
+epoch 1 augment best acc:0.916
+Epoch:  22%|██▏       | 2/9 [24:34<1:28:37, 759.67s/it]constract vocabulary based on frequency
+# train data: 24312
+# test  data: 900
+# vocab: 26049
+# class: 2
+epoch 2 augment best acc:0.912
+Epoch:  33%|███▎      | 3/9 [35:26<1:12:44, 727.44s/it]constract vocabulary based on frequency
+# train data: 24326
+# test  data: 900
+# vocab: 26023
+# class: 2
+epoch 3 augment best acc:0.908
+Epoch:  44%|████▍     | 4/9 [42:52<53:35, 643.03s/it]  constract vocabulary based on frequency
+# train data: 24298
+# test  data: 900
+# vocab: 25928
+# class: 2
+epoch 4 augment best acc:0.905
+Epoch:  56%|█████▌    | 5/9 [52:10<41:09, 617.39s/it]constract vocabulary based on frequency
+# train data: 24295
+# test  data: 900
+# vocab: 25825
+# class: 2
+epoch 5 augment best acc:0.909
+Epoch:  67%|██████▋   | 6/9 [1:03:06<31:26, 628.92s/it]constract vocabulary based on frequency
+# train data: 24310
+# test  data: 900
+# vocab: 25807
+# class: 2
+epoch 6 augment best acc:0.91
+Epoch:  78%|███████▊  | 7/9 [1:14:28<21:30, 645.05s/it]constract vocabulary based on frequency
+# train data: 24260
+# test  data: 900
+# vocab: 25854
+# class: 2
+epoch 7 augment best acc:0.908
+Epoch:  89%|████████▉ | 8/9 [1:27:15<11:21, 681.40s/it]constract vocabulary based on frequency
+# train data: 24344
+# test  data: 900
+# vocab: 25889
+# class: 2
+epoch 8 augment best acc:0.898
+Epoch: 100%|██████████| 9/9 [1:34:41<00:00, 611.00s/it]Epoch: 100%|██████████| 9/9 [1:34:41<00:00, 631.31s/it]

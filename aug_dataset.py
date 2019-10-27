@@ -19,10 +19,10 @@ from torch.utils.data.distributed import DistributedSampler
 from pytorch_pretrained_bert.tokenization import BertTokenizer
 from pytorch_pretrained_bert.modeling import BertForMaskedLM
 from pytorch_pretrained_bert.optimization import BertAdam
-from pytorch_pretrained_bert.file_utils import PYTORCH_PRETRAINED_BERT_CACHE
-
+import ipdb
 import train_text_classifier
 
+PYTORCH_PRETRAINED_BERT_CACHE = ".pytorch_pretrained_bert"
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s -   %(message)s',
                     datefmt='%m/%d/%Y %H:%M:%S',
                     level=logging.INFO)
@@ -140,7 +140,6 @@ def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer
         # Due to we use conditional bert, we need to place label information in segment_ids
         tokens = []
         segment_ids = []
-        # is [CLS]和[SEP] needed ？
         tokens.append("[CLS]")
         segment_ids.append(segment_id)
         for token in tokens_a:
@@ -268,12 +267,21 @@ def main():
                              "E.g., 0.1 = 10%% of training.")
     parser.add_argument('--seed', type=int, default=42,
                         help="random seed for initialization")
+    parser.add_argument('--sample_num', type=int, default=1,
+                        help="sample number")
+    parser.add_argument('--sample_ratio', type=int, default=7,
+                        help="sample ratio")
+    parser.add_argument('--gpu', type=int, default=0,
+                        help="gpu id")
+    parser.add_argument('--temp', type=float, default=1.0,
+                        help="temperature")
 
     args = parser.parse_args()
-    with open("global.config", 'rb') as f:
+    with open("global.config", 'r') as f:
         configs_dict = json.load(f)
 
     args.task_name = configs_dict.get("dataset")
+    args.output_dir = args.output_dir + '_{}_{}_{}_{}'.format(args.sample_num, args.sample_ratio, args.gpu, args.temp)
     print(args)
     run_aug(args, save_every_epoch=False)
 
@@ -298,7 +306,9 @@ def run_aug(args, save_every_epoch=False):
     random.seed(args.seed)
     np.random.seed(args.seed)
     torch.manual_seed(args.seed)
-    os.makedirs(args.output_dir, exist_ok=True)
+    if os.path.exists(args.output_dir):
+        shutil.rmtree(args.output_dir)
+    shutil.copytree("aug_data/{}".format(task_name), args.output_dir)
     processor = processors[task_name]()
     label_list = processor.get_labels(task_name)
 
@@ -316,22 +326,7 @@ def run_aug(args, save_every_epoch=False):
         weights_path = os.path.join(PYTORCH_PRETRAINED_BERT_CACHE, model_name)
         model = torch.load(weights_path)
         return model
-    cbert_name = "{}/BertForMaskedLM_{}_epoch_10".format(task_name.lower(), task_name.lower())
-    model = load_model(cbert_name)
-    model.cuda()
 
-    # Prepare optimizer
-    param_optimizer = list(model.named_parameters())
-    no_decay = ['bias', 'gamma', 'beta']
-    optimizer_grouped_parameters = [
-        {'params': [p for n, p in param_optimizer if not any(nd in n for nd in no_decay)], 'weight_decay_rate': 0.01},
-        {'params': [p for n, p in param_optimizer if any(nd in n for nd in no_decay)], 'weight_decay_rate': 0.0}
-    ]
-    t_total = num_train_steps
-    optimizer = BertAdam(optimizer_grouped_parameters,lr=args.learning_rate,
-                         warmup=args.warmup_proportion,t_total=t_total)
-
-    global_step = 0
     train_features = convert_examples_to_features(
         train_examples, label_list, args.max_seq_length, tokenizer)
     logger.info("***** Running training *****")
@@ -355,25 +350,14 @@ def run_aug(args, save_every_epoch=False):
     origin_train_path = os.path.join(args.output_dir, "train_origin.tsv")
     save_train_path = os.path.join(args.output_dir, "train.tsv")
     shutil.copy(origin_train_path, save_train_path)
-    best_test_acc = train_text_classifier.train("aug_data")
+    best_test_acc = train_text_classifier.train("aug_data_{}_{}_{}_{}".format(args.sample_num, args.sample_ratio, args.gpu, args.temp))
     print("before augment best acc:{}".format(best_test_acc))
 
     for e in trange(int(args.num_train_epochs), desc="Epoch"):
-        avg_loss = 0.
-
-        for step, batch in enumerate(train_dataloader):
-            model.train()
-            batch = tuple(t.cuda() for t in batch)
-            _, input_ids, input_mask, segment_ids, masked_ids = batch
-            loss = model(input_ids, segment_ids, input_mask, masked_ids)
-            loss.backward()
-            avg_loss += loss.item()
-            optimizer.step()
-            model.zero_grad()
-            if (step + 1) % 50 == 0:
-                print("avg_loss: {}".format(avg_loss / 50))
-                avg_loss = 0
         torch.cuda.empty_cache()
+        cbert_name = "{}/BertForMaskedLM_{}_epoch_{}".format(task_name.lower(), task_name.lower(), e+1)
+        model = load_model(cbert_name)
+        model.cuda()
         shutil.copy(origin_train_path, save_train_path)
         save_train_file = open(save_train_path, 'a')
         tsv_writer = csv.writer(save_train_file, delimiter='\t')
@@ -383,42 +367,30 @@ def run_aug(args, save_every_epoch=False):
             batch = tuple(t.cuda() for t in batch)
             init_ids, _, input_mask, segment_ids, _ = batch
             input_lens = [sum(mask).item() for mask in input_mask]
-            #masked_idx = np.squeeze([np.random.randint(1, l-1, 1) for l in input_lens])
-            masked_idx = np.squeeze([np.random.randint(0, l, max(l//7,2)) for l in input_lens])
+            masked_idx = np.squeeze([np.random.randint(0, l, max(l//args.sample_ratio,1)) for l in input_lens])
             for ids, idx in zip(init_ids,masked_idx):
                 ids[idx] = MASK_id
             predictions = model(init_ids, segment_ids, input_mask)
+            predictions = torch.nn.functional.softmax(predictions/args.temp, dim=2)
+            #ipdb.set_trace()
             for ids, idx, preds, seg in zip(init_ids, masked_idx, predictions, segment_ids):
-                #pred = torch.argsort(pred)[:,-e-1][idx]
-                '''
-                pred = torch.argsort(preds)[:,-1][idx]
-                ids[idx] = pred
-                new_str = tokenizer.convert_ids_to_tokens(ids.cpu().numpy())
-                new_str = rev_wordpiece(new_str)
-                tsv_writer.writerow([new_str, seg[0].item()])
-                '''
-                pred = torch.argsort(preds)[:, -2][idx]
-                ids[idx] = pred
-                new_str = tokenizer.convert_ids_to_tokens(ids.cpu().numpy())
-                new_str = rev_wordpiece(new_str)
-                tsv_writer.writerow([new_str, seg[0].item()])
+                #pred = torch.argsort(preds)[:, -2][idx]
+                preds = torch.multinomial(preds, args.sample_num, replacement=True)[idx]
+                if len(preds.size()) == 2:
+                    preds = torch.transpose(preds, 0, 1)
+                for pred in preds:
+                    ids[idx] = pred
+                    new_str = tokenizer.convert_ids_to_tokens(ids.cpu().numpy())
+                    new_str = rev_wordpiece(new_str)
+                    tsv_writer.writerow([new_str, seg[0].item()])
             torch.cuda.empty_cache()
         predictions = predictions.detach().cpu()
+        model.cpu()
         torch.cuda.empty_cache()
         bak_train_path = os.path.join(args.output_dir, "train_epoch_{}.tsv".format(e))
         shutil.copy(save_train_path, bak_train_path)
-        best_test_acc = train_text_classifier.train("aug_data")
+        best_test_acc = train_text_classifier.train("aug_data_{}_{}_{}_{}".format(args.sample_num, args.sample_ratio, args.gpu, args.temp))
         print("epoch {} augment best acc:{}".format(e, best_test_acc))
-        if save_every_epoch:
-            save_model_name = "BertForMaskedLM_" + task_name + "_epoch_" + str(e + 1)
-            save_model_path = os.path.join(save_model_dir, save_model_name)
-            torch.save(model, save_model_path)
-        else:
-            if (e + 1) % 10 == 0:
-                save_model_name = "BertForMaskedLM_" + task_name + "_epoch_" + str(e + 1)
-                save_model_path = os.path.join(save_model_dir, save_model_name)
-                torch.save(model, save_model_path)
-
 
 if __name__ == "__main__":
     main()

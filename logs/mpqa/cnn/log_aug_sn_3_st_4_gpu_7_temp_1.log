@@ -1,0 +1,84 @@
+Namespace(bert_model='bert-base-uncased', data_dir='datasets', do_lower_case=False, gpu=7, learning_rate=5e-05, max_seq_length=64, num_train_epochs=9.0, output_dir='aug_data_3_4_7_1.0', sample_num=3, sample_ratio=4, seed=42, task_name='mpqa', temp=1.0, train_batch_size=32, warmup_proportion=0.1)
+10/25/2019 10:27:04 - WARNING - pytorch_pretrained_bert.tokenization -   The pre-trained model you are loading is an uncased model but you have set `do_lower_case` to False. We are setting `do_lower_case=True` for you but you may want to check this behavior.
+10/25/2019 10:27:06 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-vocab.txt from cache at /root/.pytorch_pretrained_bert/26bc1ad6c0ac742e9b52263248f6d0f00068293b33709fae12320c0e35ccfbbb.542ce4285a40d23a559526243235df47c5f75c197f04f37d1a0c124c32c9a084
+10/25/2019 10:27:07 - INFO - __main__ -   *** Example ***
+10/25/2019 10:27:07 - INFO - __main__ -   guid: train-1
+10/25/2019 10:27:07 - INFO - __main__ -   tokens: [CLS] most disturbing of all [SEP]
+10/25/2019 10:27:07 - INFO - __main__ -   init_ids: 101 2087 14888 1997 2035 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/25/2019 10:27:07 - INFO - __main__ -   input_ids: 101 2087 1997 1997 2035 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/25/2019 10:27:07 - INFO - __main__ -   input_mask: 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/25/2019 10:27:07 - INFO - __main__ -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/25/2019 10:27:07 - INFO - __main__ -   masked_lm_labels: -1 -1 14888 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+10/25/2019 10:27:07 - INFO - __main__ -   *** Example ***
+10/25/2019 10:27:07 - INFO - __main__ -   guid: train-2
+10/25/2019 10:27:07 - INFO - __main__ -   tokens: [CLS] taking care to avoid directly criticizing [SEP]
+10/25/2019 10:27:07 - INFO - __main__ -   init_ids: 101 2635 2729 2000 4468 3495 21289 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/25/2019 10:27:07 - INFO - __main__ -   input_ids: 101 2635 2729 2000 4468 103 21289 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/25/2019 10:27:07 - INFO - __main__ -   input_mask: 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/25/2019 10:27:07 - INFO - __main__ -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/25/2019 10:27:07 - INFO - __main__ -   masked_lm_labels: -1 -1 -1 -1 -1 3495 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+10/25/2019 10:27:08 - INFO - __main__ -   ***** Running training *****
+10/25/2019 10:27:08 - INFO - __main__ -     Num examples = 8587
+10/25/2019 10:27:08 - INFO - __main__ -     Batch size = 32
+10/25/2019 10:27:08 - INFO - __main__ -     Num steps = 2415
+constract vocabulary based on frequency
+# train data: 8587
+# test  data: 955
+# vocab: 5968
+# class: 2
+before augment best acc:0.852026
+Epoch:   0%|          | 0/9 [00:00<?, ?it/s]constract vocabulary based on frequency
+# train data: 34122
+# test  data: 955
+# vocab: 6944
+# class: 2
+epoch 0 augment best acc:0.864279
+Epoch:  11%|█         | 1/9 [15:54<2:07:12, 954.07s/it]constract vocabulary based on frequency
+# train data: 34343
+# test  data: 955
+# vocab: 6580
+# class: 2
+epoch 1 augment best acc:0.858624
+Epoch:  22%|██▏       | 2/9 [26:17<1:39:44, 854.95s/it]constract vocabulary based on frequency
+# train data: 34301
+# test  data: 955
+# vocab: 6527
+# class: 2
+epoch 2 augment best acc:0.852969
+Epoch:  33%|███▎      | 3/9 [36:55<1:18:58, 789.82s/it]constract vocabulary based on frequency
+# train data: 34414
+# test  data: 955
+# vocab: 6584
+# class: 2
+epoch 3 augment best acc:0.858624
+Epoch:  44%|████▍     | 4/9 [49:00<1:04:11, 770.22s/it]constract vocabulary based on frequency
+# train data: 34383
+# test  data: 955
+# vocab: 6513
+# class: 2
+epoch 4 augment best acc:0.859566
+Epoch:  56%|█████▌    | 5/9 [58:48<47:43, 715.83s/it]  constract vocabulary based on frequency
+# train data: 34321
+# test  data: 955
+# vocab: 6611
+# class: 2
+epoch 5 augment best acc:0.848256
+Epoch:  67%|██████▋   | 6/9 [1:06:35<32:03, 641.10s/it]constract vocabulary based on frequency
+# train data: 34351
+# test  data: 955
+# vocab: 6508
+# class: 2
+epoch 6 augment best acc:0.862394
+Epoch:  78%|███████▊  | 7/9 [1:17:18<21:23, 641.66s/it]constract vocabulary based on frequency
+# train data: 34354
+# test  data: 955
+# vocab: 6519
+# class: 2
+epoch 7 augment best acc:0.863337
+Epoch:  89%|████████▉ | 8/9 [1:27:00<10:23, 623.78s/it]constract vocabulary based on frequency
+# train data: 34301
+# test  data: 955
+# vocab: 6478
+# class: 2
+epoch 8 augment best acc:0.860509
+Epoch: 100%|██████████| 9/9 [1:34:22<00:00, 569.30s/it]Epoch: 100%|██████████| 9/9 [1:34:22<00:00, 629.21s/it]

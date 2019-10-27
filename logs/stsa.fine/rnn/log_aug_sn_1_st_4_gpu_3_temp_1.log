@@ -1,0 +1,84 @@
+Namespace(bert_model='bert-base-uncased', data_dir='datasets', do_lower_case=False, gpu=3, learning_rate=5e-05, max_seq_length=64, num_train_epochs=9.0, output_dir='aug_data_1_4_3_1.0', sample_num=1, sample_ratio=4, seed=42, task_name='stsa.fine', temp=1.0, train_batch_size=32, warmup_proportion=0.1)
+10/27/2019 01:49:06 - WARNING - pytorch_pretrained_bert.tokenization -   The pre-trained model you are loading is an uncased model but you have set `do_lower_case` to False. We are setting `do_lower_case=True` for you but you may want to check this behavior.
+10/27/2019 01:49:08 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-vocab.txt from cache at /root/.pytorch_pretrained_bert/26bc1ad6c0ac742e9b52263248f6d0f00068293b33709fae12320c0e35ccfbbb.542ce4285a40d23a559526243235df47c5f75c197f04f37d1a0c124c32c9a084
+10/27/2019 01:49:08 - INFO - __main__ -   *** Example ***
+10/27/2019 01:49:08 - INFO - __main__ -   guid: train-1
+10/27/2019 01:49:08 - INFO - __main__ -   tokens: [CLS] too smart to ignore but a little too smug ##ly superior to like , this could be a movie that ends up slapping its target audience in the face by shooting itself in the foot . [SEP]
+10/27/2019 01:49:08 - INFO - __main__ -   init_ids: 101 2205 6047 2000 8568 2021 1037 2210 2205 20673 2135 6020 2000 2066 1010 2023 2071 2022 1037 3185 2008 4515 2039 22021 2049 4539 4378 1999 1996 2227 2011 5008 2993 1999 1996 3329 1012 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/27/2019 01:49:08 - INFO - __main__ -   input_ids: 101 2205 103 2000 8568 103 1037 2210 103 20673 2135 103 2000 2066 1010 2023 2071 2022 1037 3185 2008 4515 2039 22021 2049 4539 4378 1999 1996 2227 2011 5008 103 1999 1996 103 1012 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/27/2019 01:49:08 - INFO - __main__ -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/27/2019 01:49:08 - INFO - __main__ -   segment_ids: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/27/2019 01:49:08 - INFO - __main__ -   masked_lm_labels: -1 -1 6047 -1 -1 2021 -1 -1 2205 -1 -1 6020 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 2993 -1 -1 3329 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+10/27/2019 01:49:08 - INFO - __main__ -   *** Example ***
+10/27/2019 01:49:08 - INFO - __main__ -   guid: train-2
+10/27/2019 01:49:08 - INFO - __main__ -   tokens: [CLS] rai ##mi and his team could n ' t have done any better in bringing the story of spider - man to the big screen . [SEP]
+10/27/2019 01:49:08 - INFO - __main__ -   init_ids: 101 15547 4328 1998 2010 2136 2071 1050 1005 1056 2031 2589 2151 2488 1999 5026 1996 2466 1997 6804 1011 2158 2000 1996 2502 3898 1012 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/27/2019 01:49:08 - INFO - __main__ -   input_ids: 101 15547 4328 1998 2010 2136 2071 2136 1005 1056 2031 103 2151 2488 1999 5026 1996 2466 1997 6804 103 2158 2000 1996 2502 3898 1012 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/27/2019 01:49:08 - INFO - __main__ -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/27/2019 01:49:08 - INFO - __main__ -   segment_ids: 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+10/27/2019 01:49:08 - INFO - __main__ -   masked_lm_labels: -1 -1 -1 1998 -1 -1 -1 1050 -1 -1 -1 2589 -1 -1 -1 -1 -1 -1 -1 -1 1011 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+10/27/2019 01:49:13 - INFO - __main__ -   ***** Running training *****
+10/27/2019 01:49:13 - INFO - __main__ -     Num examples = 7689
+10/27/2019 01:49:13 - INFO - __main__ -     Batch size = 32
+10/27/2019 01:49:13 - INFO - __main__ -     Num steps = 2162
+constract vocabulary based on frequency
+# train data: 7689
+# test  data: 855
+# vocab: 16581
+# class: 5
+before augment best acc:0.391855
+Epoch:   0%|          | 0/9 [00:00<?, ?it/s]constract vocabulary based on frequency
+# train data: 15331
+# test  data: 855
+# vocab: 19788
+# class: 5
+epoch 0 augment best acc:0.411312
+Epoch:  11%|█         | 1/9 [11:33<1:32:31, 693.97s/it]constract vocabulary based on frequency
+# train data: 15387
+# test  data: 855
+# vocab: 19384
+# class: 5
+epoch 1 augment best acc:0.41086
+Epoch:  22%|██▏       | 2/9 [19:06<1:12:31, 621.65s/it]constract vocabulary based on frequency
+# train data: 15375
+# test  data: 855
+# vocab: 19207
+# class: 5
+epoch 2 augment best acc:0.419457
+Epoch:  33%|███▎      | 3/9 [28:25<1:00:15, 602.60s/it]constract vocabulary based on frequency
+# train data: 15386
+# test  data: 855
+# vocab: 19115
+# class: 5
+epoch 3 augment best acc:0.409502
+Epoch:  44%|████▍     | 4/9 [36:29<47:16, 567.26s/it]  constract vocabulary based on frequency
+# train data: 15379
+# test  data: 855
+# vocab: 18934
+# class: 5
+epoch 4 augment best acc:0.412217
+Epoch:  56%|█████▌    | 5/9 [44:29<36:03, 540.86s/it]constract vocabulary based on frequency
+# train data: 15373
+# test  data: 855
+# vocab: 18987
+# class: 5
+epoch 5 augment best acc:0.403167
+Epoch:  67%|██████▋   | 6/9 [51:37<25:21, 507.23s/it]constract vocabulary based on frequency
+# train data: 15402
+# test  data: 855
+# vocab: 19016
+# class: 5
+epoch 6 augment best acc:0.411312
+Epoch:  78%|███████▊  | 7/9 [1:00:26<17:07, 513.67s/it]constract vocabulary based on frequency
+# train data: 15371
+# test  data: 855
+# vocab: 18960
+# class: 5
+epoch 7 augment best acc:0.415385
+Epoch:  89%|████████▉ | 8/9 [1:09:00<08:33, 513.79s/it]constract vocabulary based on frequency
+# train data: 15372
+# test  data: 855
+# vocab: 18826
+# class: 5
+epoch 8 augment best acc:0.418552
+Epoch: 100%|██████████| 9/9 [1:16:42<00:00, 498.17s/it]Epoch: 100%|██████████| 9/9 [1:16:42<00:00, 511.37s/it]

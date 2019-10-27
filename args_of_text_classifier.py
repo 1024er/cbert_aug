@@ -19,11 +19,11 @@ def get_basic_arg_parser():
                         help='Number of units')
     parser.add_argument('--layer', '-l', type=int, default=1,
                         help='Number of layers of RNN or MLP following CNN')
-    parser.add_argument('--dropout', '-d', type=float, default=0.5,
+    parser.add_argument('--dropout', '-d', type=float, default=0.4,
                         help='Dropout rate')
     parser.add_argument('--learning-rate', '-lr', type=float, default=1e-4,
                         help='Learning rate')
-    parser.add_argument('--dataset', '-data', default='imdb.binary',
+    parser.add_argument('--dataset', '-data', default='mpqa',
                         choices=['dbpedia', 'imdb.binary', 'imdb.fine',
                                  'TREC', 'stsa.binary', 'stsa.fine',
                                  'custrev', 'mpqa', 'rt-polarity', 'subj'],

@@ -66,11 +66,11 @@ def transform_to_array(dataset, vocab, with_label=True):
 
 def convert_seq(batch, device=None, with_label=True):
     def to_device_batch(batch):
-        if device is None:
-            return batch
-        elif device < 0:
-            return [chainer.dataset.to_device(device, x) for x in batch]
-        else:
+        #if device is None:
+        #    return batch
+        #elif device < 0:
+        #    return [chainer.dataset.to_device(device, x) for x in batch]
+        #else:
             xp = cuda.cupy.get_array_module(*batch)
             concat = xp.concatenate(batch, axis=0)
             sections = numpy.cumsum([len(x) for x in batch[:-1]], dtype='i')

@@ -1,0 +1,41 @@
+{
+  "bilm": null,
+  "validation": true,
+  "epoch": 100,
+  "no_label": false,
+  "bilm_layer": 1,
+  "dataset": "stsa.fine",
+  "bilm_temp": 1.0,
+  "bilm_gumbel": false,
+  "bilm_residual": 0.0,
+  "batchsize": 64,
+  "resume_vocab": null,
+  "bilm_wordwise": true,
+  "stop_epoch": 20,
+  "bilm_ratio": 0.25,
+  "dropout": 0.1,
+  "layer": 1,
+  "gpu": 0,
+  "bilm_mode": "sampling",
+  "out": "result",
+  "bilm_unit": 1024,
+  "bilm_add_original": 0.0,
+  "unit": 300,
+  "bilm_dropout": 0.0,
+  "model": "rnn",
+  "save_model": false,
+  "learning_rate": 0.0001,
+  "seed": 2018
+}
+constract vocabulary based on frequency
+# train data: 7689
+# test  data: 855
+# vocab: 16581
+# class: 5
+epoch       main/loss   validation/main/loss  main/accuracy  validation/main/accuracy  test/main/loss  test/main/accuracy  elapsed_time
+[J1           1.57142     1.57804               0.277118       0.259649                  1.57952         0.230769            5.74506       
+[J2           1.55955     1.57155               0.29362        0.302924                  1.57039         0.288235            9.25153       
+[J3           1.50972     1.49831               0.339974       0.31345                   1.50012         0.326244            12.7765       
+[J4           1.40036     1.44116               0.397656       0.34386                   1.44757         0.357919            16.3031       
+[J5           1.27879     1.42593               0.449609       0.37076                   1.415           0.378281            19.7844       
+[J6           1.17613     1.42429               0.495052       0.380117                  1.41717         0.388688            23.3288       

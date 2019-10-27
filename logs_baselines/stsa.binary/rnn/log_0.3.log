@@ -1,0 +1,46 @@
+{
+  "dropout": 0.3,
+  "bilm_ratio": 0.25,
+  "model": "rnn",
+  "bilm_mode": "sampling",
+  "dataset": "stsa.binary",
+  "bilm": null,
+  "bilm_temp": 1.0,
+  "bilm_wordwise": true,
+  "bilm_unit": 1024,
+  "bilm_dropout": 0.0,
+  "resume_vocab": null,
+  "seed": 2018,
+  "bilm_residual": 0.0,
+  "stop_epoch": 20,
+  "batchsize": 64,
+  "out": "result",
+  "unit": 300,
+  "epoch": 100,
+  "bilm_gumbel": false,
+  "bilm_layer": 1,
+  "save_model": false,
+  "no_label": false,
+  "gpu": 0,
+  "validation": true,
+  "layer": 1,
+  "bilm_add_original": 0.0,
+  "learning_rate": 0.0001
+}
+constract vocabulary based on frequency
+# train data: 6228
+# test  data: 692
+# vocab: 14830
+# class: 2
+epoch       main/loss   validation/main/loss  main/accuracy  validation/main/accuracy  test/main/loss  test/main/accuracy  elapsed_time
+[J1           0.692228    0.68895               0.521205       0.533237                  0.690366        0.512905            5.13328       
+[J2           0.681923    0.668417              0.558956       0.57659                   0.667918        0.588138            7.95942       
+[J3           0.625753    0.613215              0.659149       0.654624                  0.588391        0.687534            10.7749       
+[J4           0.535526    0.609124              0.73294        0.680636                  0.570179        0.706755            13.5683       
+[J5           0.458509    0.54793               0.791237       0.734104                  0.515122        0.749039            16.39         
+[J6           0.405382    0.532267              0.823615       0.748555                  0.510736        0.751785            19.1685       
+[J7           0.351249    0.538024              0.849968       0.75578                   0.523742        0.758924            22.0188       
+[J8           0.315764    0.538815              0.865979       0.757225                  0.502789        0.774849            24.7941       
+[J9           0.276267    0.52208               0.883537       0.776012                  0.497763        0.777046            27.6157       
+[J10          0.237456    0.609338              0.902583       0.781792                  0.576753        0.778693            30.4384       
+[J11          0.223152    0.550455              0.908505       0.802023                  0.533208        0.789127            33.254        

@@ -1,0 +1,117 @@
++ export CUDA_VISIBLE_DEVICES=6
++ CUDA_VISIBLE_DEVICES=6
++ dataset=subj
++ for d in 0.1 0.2 0.3 0.4 0.5 0.6
++ python -u train_text_classifier_original.py --dataset subj --model rnn --dropout 0.1
++ python -u train_text_classifier_original.py --dataset subj --model cnn --dropout 0.1
+Traceback (most recent call last):
+  File "train_text_classifier_original.py", line 198, in <module>
+    main()
+  File "train_text_classifier_original.py", line 36, in main
+    train(print_log=True)
+  File "train_text_classifier_original.py", line 195, in train
+    return float(out[-1])
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "train_text_classifier_original.py", line 198, in <module>
+    main()
+  File "train_text_classifier_original.py", line 36, in main
+    train(print_log=True)
+  File "train_text_classifier_original.py", line 195, in train
+    return float(out[-1])
+IndexError: list index out of range
++ for d in 0.1 0.2 0.3 0.4 0.5 0.6
++ python -u train_text_classifier_original.py --dataset subj --model rnn --dropout 0.2
++ python -u train_text_classifier_original.py --dataset subj --model cnn --dropout 0.2
+Traceback (most recent call last):
+  File "train_text_classifier_original.py", line 198, in <module>
+    main()
+  File "train_text_classifier_original.py", line 36, in main
+    train(print_log=True)
+  File "train_text_classifier_original.py", line 195, in train
+    return float(out[-1])
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "train_text_classifier_original.py", line 198, in <module>
+    main()
+  File "train_text_classifier_original.py", line 36, in main
+    train(print_log=True)
+  File "train_text_classifier_original.py", line 195, in train
+    return float(out[-1])
+IndexError: list index out of range
++ for d in 0.1 0.2 0.3 0.4 0.5 0.6
++ python -u train_text_classifier_original.py --dataset subj --model rnn --dropout 0.3
++ python -u train_text_classifier_original.py --dataset subj --model cnn --dropout 0.3
+Traceback (most recent call last):
+  File "train_text_classifier_original.py", line 198, in <module>
+    main()
+  File "train_text_classifier_original.py", line 36, in main
+    train(print_log=True)
+  File "train_text_classifier_original.py", line 195, in train
+    return float(out[-1])
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "train_text_classifier_original.py", line 198, in <module>
+    main()
+  File "train_text_classifier_original.py", line 36, in main
+    train(print_log=True)
+  File "train_text_classifier_original.py", line 195, in train
+    return float(out[-1])
+IndexError: list index out of range
++ for d in 0.1 0.2 0.3 0.4 0.5 0.6
++ python -u train_text_classifier_original.py --dataset subj --model rnn --dropout 0.4
++ python -u train_text_classifier_original.py --dataset subj --model cnn --dropout 0.4
+Traceback (most recent call last):
+  File "train_text_classifier_original.py", line 198, in <module>
+    main()
+  File "train_text_classifier_original.py", line 36, in main
+    train(print_log=True)
+  File "train_text_classifier_original.py", line 195, in train
+    return float(out[-1])
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "train_text_classifier_original.py", line 198, in <module>
+    main()
+  File "train_text_classifier_original.py", line 36, in main
+    train(print_log=True)
+  File "train_text_classifier_original.py", line 195, in train
+    return float(out[-1])
+IndexError: list index out of range
++ for d in 0.1 0.2 0.3 0.4 0.5 0.6
++ python -u train_text_classifier_original.py --dataset subj --model rnn --dropout 0.5
++ python -u train_text_classifier_original.py --dataset subj --model cnn --dropout 0.5
+Traceback (most recent call last):
+  File "train_text_classifier_original.py", line 198, in <module>
+    main()
+  File "train_text_classifier_original.py", line 36, in main
+    train(print_log=True)
+  File "train_text_classifier_original.py", line 195, in train
+    return float(out[-1])
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "train_text_classifier_original.py", line 198, in <module>
+    main()
+  File "train_text_classifier_original.py", line 36, in main
+    train(print_log=True)
+  File "train_text_classifier_original.py", line 195, in train
+    return float(out[-1])
+IndexError: list index out of range
++ for d in 0.1 0.2 0.3 0.4 0.5 0.6
++ python -u train_text_classifier_original.py --dataset subj --model rnn --dropout 0.6
++ python -u train_text_classifier_original.py --dataset subj --model cnn --dropout 0.6
+Traceback (most recent call last):
+  File "train_text_classifier_original.py", line 198, in <module>
+    main()
+  File "train_text_classifier_original.py", line 36, in main
+    train(print_log=True)
+  File "train_text_classifier_original.py", line 195, in train
+    return float(out[-1])
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "train_text_classifier_original.py", line 198, in <module>
+    main()
+  File "train_text_classifier_original.py", line 36, in main
+    train(print_log=True)
+  File "train_text_classifier_original.py", line 195, in train
+    return float(out[-1])
+IndexError: list index out of range

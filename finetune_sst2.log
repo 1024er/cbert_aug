@@ -1,0 +1,240 @@
+/bin/sh: 1: __git_ps1: not found
+\[\033[1;33m\]λ \[\033[1;37m\]\h \[\033[1;32m\]\w\[\033[1;33m\]\[\033[0m\] bash fi	 ne	    finetue_daa taset.sh 0
+/bin/sh: 1: bashfinetue_dataset.sh: not found
+/bin/sh: 1: __git_ps1: not found
+\[\033[1;33m\]λ \[\033[1;37m\]\h \[\033[1;32m\]\w\[\033[1;33m\]\[\033[0m\] ^[[A^[[B        bash finetue_dataset.sh 0
+bash: finetue_dataset.sh: No such file or directory
+/bin/sh: 1: __git_ps1: not found
+\[\033[1;33m\]λ \[\033[1;37m\]\h \[\033[1;32m\]\w\[\033[1;33m\]\[\033[0m\] ls
+args_of_text_classifier.py  aug_dataset.py	  datasets	finetune_dataset.py  global.config  __pycache__  README.md  run.sh	 screenlog_finetune_sst2.log  train_text_classifier.py	utils.py
+aug_data		    aug_dataset_wo_ft.py  evaluator.py	finetune_dataset.sh  nets.py	    python	 result     screenlog.0  text_classification	      triggers.py		vocabs
+/bin/sh: 1: __git_ps1: not found
+\[\033[1;33m\]λ \[\033[1;37m\]\h \[\033[1;32m\]\w\[\033[1;33m\]\[\033[0m\] bash finetune_dataset.sh 0
++ export CUDA_VISIBLE_DEVICES=0
++ CUDA_VISIBLE_DEVICES=0
++ python finetune_dataset.py
+Namespace(bert_model='bert-base-uncased', data_dir='datasets', do_lower_case=False, learning_rate=5e-05, max_seq_length=64, num_train_epochs=10.0, output_dir='aug_data', seed=42, task_name='stsa.binary', train_batch_size=32, warmup_proportion=0.1)
+10/24/2019 08:54:35 - WARNING - pytorch_pretrained_bert.tokenization -   The pre-trained model you are loading is an uncased model but you have set `do_lower_case` to False. We are setting `do_lower_case=True` for you but you may want to check this behavior.
+10/24/2019 08:54:37 - INFO - pytorch_pretrained_bert.tokenization -   loading vocabulary file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-vocab.txt from cache at /root/.pytorch_pretrained_bert/26bc1ad6c0ac742e9b52263248f6d0f00068293b33709fae12320c0e35ccfbbb.542ce4285a40d23a559526243235df47c5f75c197f04f37d1a0c124c32c9a084
+10/24/2019 08:54:40 - INFO - pytorch_pretrained_bert.modeling -   loading archive file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased.tar.gz from cache at /root/.pytorch_pretrained_bert/9c41111e2de84547a463fd39217199738d1e3deb72d4fec4399e6e241983c6f0.ae3cef932725ca7a30cdcb93fc6e09150a55e2a130ec7af63975a16c153ae2ba
+10/24/2019 08:54:40 - INFO - pytorch_pretrained_bert.modeling -   extracting archive file /root/.pytorch_pretrained_bert/9c41111e2de84547a463fd39217199738d1e3deb72d4fec4399e6e241983c6f0.ae3cef932725ca7a30cdcb93fc6e09150a55e2a130ec7af63975a16c153ae2ba to temp dir /tmp/tmpkybczq5x
+10/24/2019 08:54:45 - INFO - pytorch_pretrained_bert.modeling -   Model config {
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "max_position_embeddings": 512,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "type_vocab_size": 2,
+  "vocab_size": 30522
+}
+
+10/24/2019 08:54:51 - INFO - pytorch_pretrained_bert.modeling -   Weights from pretrained model not used in BertForMaskedLM: ['cls.seq_relationship.weight', 'cls.seq_relationship.bias']
+10/24/2019 08:55:13 - INFO - __main__ -   ***** Running training *****
+10/24/2019 08:55:13 - INFO - __main__ -     Num examples = 31140
+10/24/2019 08:55:14 - INFO - __main__ -     Batch size = 32
+10/24/2019 08:55:14 - INFO - __main__ -     Num steps = 9731
+Epoch:   0%|                                                                                                                                                                         | 0/10 [00:00<?, ?it/s]avg_loss: 3.002501301765442
+avg_loss: 2.6321489214897156
+avg_loss: 2.4933505702018737
+avg_loss: 2.4827828073501585
+avg_loss: 2.4085325717926027
+avg_loss: 2.3700577092170714
+avg_loss: 2.38023143529892
+avg_loss: 2.3445087456703186
+avg_loss: 2.2890095710754395
+avg_loss: 2.2627751660346984
+avg_loss: 2.2239297604560853
+avg_loss: 2.164658269882202
+avg_loss: 2.112579822540283
+avg_loss: 2.142021613121033
+avg_loss: 2.1704152488708495
+avg_loss: 2.1657833886146545
+avg_loss: 2.024079670906067
+avg_loss: 2.090289664268494
+avg_loss: 2.0870840167999267
+Epoch:  10%|████████████████                                                                                                                                                | 1/10 [06:23<57:31, 383.47s/it]avg_loss: 1.5070151901245117
+avg_loss: 1.4038217043876648
+avg_loss: 1.4169537043571472
+avg_loss: 1.3882975053787232
+avg_loss: 1.468806495666504
+avg_loss: 1.3610171914100646
+avg_loss: 1.4316205787658691
+avg_loss: 1.3901313638687134
+avg_loss: 1.2853389918804168
+avg_loss: 1.4635883629322053
+avg_loss: 1.4249585747718811
+avg_loss: 1.3418354320526122
+avg_loss: 1.3955275559425353
+avg_loss: 1.2950031018257142
+avg_loss: 1.383287831544876
+avg_loss: 1.2969185650348662
+avg_loss: 1.3305769789218902
+avg_loss: 1.2313629078865052
+avg_loss: 1.3458623743057252
+Epoch:  20%|████████████████████████████████                                                                                                                                | 2/10 [12:48<51:12, 384.06s/it]avg_loss: 0.6429963076114654
+avg_loss: 0.6213469862937927
+avg_loss: 0.6202815335988998
+avg_loss: 0.6916486382484436
+avg_loss: 0.6623555660247803
+avg_loss: 0.6404728305339813
+avg_loss: 0.6569991856813431
+avg_loss: 0.6938537293672562
+avg_loss: 0.6498234689235687
+avg_loss: 0.6451740419864654
+avg_loss: 0.6734341734647751
+avg_loss: 0.6875482791662216
+avg_loss: 0.6381685662269593
+avg_loss: 0.6713354754447937
+avg_loss: 0.6160449105501175
+avg_loss: 0.6911538308858871
+avg_loss: 0.633777921795845
+avg_loss: 0.6492578768730164
+avg_loss: 0.6407470962405205
+Epoch:  30%|████████████████████████████████████████████████                                                                                                                | 3/10 [19:14<44:52, 384.59s/it]avg_loss: 0.27204143270850184
+avg_loss: 0.2602607960999012
+avg_loss: 0.2726223123073578
+avg_loss: 0.28790842652320864
+avg_loss: 0.2877562129497528
+avg_loss: 0.2836748695373535
+avg_loss: 0.3156432071328163
+avg_loss: 0.28410994336009027
+avg_loss: 0.3037267935276031
+avg_loss: 0.2940799434483051
+avg_loss: 0.3098851743340492
+avg_loss: 0.3197346583008766
+avg_loss: 0.31991717487573623
+avg_loss: 0.3207520511746407
+avg_loss: 0.3106842395663261
+avg_loss: 0.2841997513175011
+avg_loss: 0.3146902647614479
+avg_loss: 0.31568029046058654
+avg_loss: 0.3266257593035698
+Epoch:  40%|████████████████████████████████████████████████████████████████                                                                                                | 4/10 [25:40<38:28, 384.79s/it]avg_loss: 0.1329217091202736
+avg_loss: 0.13151939809322358
+avg_loss: 0.14066958010196687
+avg_loss: 0.13186664432287215
+avg_loss: 0.13204937882721424
+avg_loss: 0.13482004001736642
+avg_loss: 0.13710838966071606
+avg_loss: 0.14221289187669753
+avg_loss: 0.13869472317397594
+avg_loss: 0.13274274095892907
+avg_loss: 0.13304286032915116
+avg_loss: 0.134939581528306
+avg_loss: 0.14708237558603288
+avg_loss: 0.14714845396578313
+avg_loss: 0.1376516705006361
+avg_loss: 0.14685943007469177
+avg_loss: 0.1354997757077217
+avg_loss: 0.15192896284163
+avg_loss: 0.13878932274878025
+Epoch:  50%|████████████████████████████████████████████████████████████████████████████████                                                                                | 5/10 [32:04<32:04, 384.85s/it]avg_loss: 0.06316649906337261
+avg_loss: 0.06239865742623806
+avg_loss: 0.06521705906838178
+avg_loss: 0.06320784952491522
+avg_loss: 0.06638618253171444
+avg_loss: 0.07055895317345857
+avg_loss: 0.06793471612036228
+avg_loss: 0.06768723245710134
+avg_loss: 0.06256137508898973
+avg_loss: 0.06947712548077106
+avg_loss: 0.06838679000735283
+avg_loss: 0.06566923309117556
+avg_loss: 0.06986786924302578
+avg_loss: 0.0664600621163845
+avg_loss: 0.07616436585783959
+avg_loss: 0.0739863432198763
+avg_loss: 0.07718692548573017
+avg_loss: 0.06970043692737818
+avg_loss: 0.06844656333327294
+Epoch:  60%|████████████████████████████████████████████████████████████████████████████████████████████████                                                                | 6/10 [38:29<25:39, 384.80s/it]avg_loss: 0.03823384067043662
+avg_loss: 0.03979595638811588
+avg_loss: 0.04502802956849337
+avg_loss: 0.04254504580050707
+avg_loss: 0.046057292856276036
+avg_loss: 0.04254351396113634
+avg_loss: 0.04223353244364261
+avg_loss: 0.04068698078393936
+avg_loss: 0.03876552641391754
+avg_loss: 0.04379283357411623
+avg_loss: 0.044424363411962986
+avg_loss: 0.04043907191604376
+avg_loss: 0.03916029669344425
+avg_loss: 0.036377187538892033
+avg_loss: 0.04534252017736435
+avg_loss: 0.04132672596722841
+avg_loss: 0.047800592705607416
+avg_loss: 0.0446542314440012
+avg_loss: 0.04337126243859529
+Epoch:  70%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████                                                | 7/10 [44:54<19:14, 384.67s/it]avg_loss: 0.032816884461790326
+avg_loss: 0.028441181387752295
+avg_loss: 0.028731542453169823
+avg_loss: 0.031152676064521073
+avg_loss: 0.026603400576859712
+avg_loss: 0.03185775378718972
+avg_loss: 0.02637502782046795
+avg_loss: 0.02763018649071455
+avg_loss: 0.028736851289868356
+avg_loss: 0.027281331419944762
+avg_loss: 0.02831621205434203
+avg_loss: 0.03039242831990123
+avg_loss: 0.026554234512150287
+avg_loss: 0.027099737655371426
+avg_loss: 0.02995615215972066
+avg_loss: 0.03022425003349781
+avg_loss: 0.025967751126736403
+avg_loss: 0.027385322730988263
+avg_loss: 0.026847813464701175
+Epoch:  80%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████                                | 8/10 [51:18<12:49, 384.64s/it]avg_loss: 0.020805933559313417
+avg_loss: 0.019630982242524624
+avg_loss: 0.018281223215162755
+avg_loss: 0.022988997362554074
+avg_loss: 0.020767254391685128
+avg_loss: 0.023803320955485107
+avg_loss: 0.02103971753269434
+avg_loss: 0.020802758047357203
+avg_loss: 0.02024362588301301
+avg_loss: 0.022502893283963203
+avg_loss: 0.019777686093002556
+avg_loss: 0.021673589255660774
+avg_loss: 0.021960584353655575
+avg_loss: 0.021352158384397624
+avg_loss: 0.021495292093604804
+avg_loss: 0.02168962635099888
+avg_loss: 0.02216933561488986
+avg_loss: 0.019763037990778685
+avg_loss: 0.02305266438052058
+Epoch:  90%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████                | 9/10 [57:43<06:24, 384.57s/it]avg_loss: 0.016573777124285698
+avg_loss: 0.01869789158925414
+avg_loss: 0.016141280895099044
+avg_loss: 0.016691572861745954
+avg_loss: 0.018023939672857522
+avg_loss: 0.015166376568377018
+avg_loss: 0.018275243025273086
+avg_loss: 0.017144820112735035
+avg_loss: 0.016844989573583005
+avg_loss: 0.015301192775368691
+avg_loss: 0.015620265724137425
+avg_loss: 0.015289771622046828
+avg_loss: 0.015988740529865028
+avg_loss: 0.01640735100954771
+avg_loss: 0.017179688895121215
+avg_loss: 0.015400505941361189
+avg_loss: 0.015794238122180105
+avg_loss: 0.016717679621651767
+avg_loss: 0.017768791327252984
+10/24/2019 09:59:18 - WARNING - pytorch_pretrained_bert.optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+10/24/2019 09:59:19 - WARNING - pytorch_pretrained_bert.optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+10/24/2019 09:59:19 - WARNING - pytorch_pretrained_bert.optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+10/24/2019 09:59:19 - WARNING - pytorch_pretrained_bert.optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+10/24/2019 09:59:20 - WARNING - pytorch_pretrained_bert.optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+10/24/2019 09:59:20 - WARNING - pytorch_pretrained_bert.optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+10/24/2019 09:59:21 - WARNING - pytorch_pretrained_bert.optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+10/24/2019 09:59:21 - WARNING - pytorch_pretrained_bert.optimization -   Training beyond specified 't_total'. Learning rate multiplier set to 0.0. Please set 't_total' of WarmupLinearSchedule correctly.
+Epoch: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [1:04:07<00:00, 384.56s/it]Epoch: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [1:04:07<00:00, 384.76s/it]
+/bin/sh: 1: __git_ps1: not found
+\[\033[1;33m\]λ \[\033[1;37m\]\h \[\033[1;32m\]\w\[\033[1;33m\]\[\033[0m\] ^[[B^[[B^[[A            

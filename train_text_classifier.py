@@ -26,16 +26,19 @@ from utils import UnkDropout, Outer
 #cupy.cuda.set_allocator(None)
 #cupy.cuda.set_pinned_memory_allocator(None)
 
-# default local parameters -- no need to change
-parser = args_of_text_classifier.get_basic_arg_parser()
-args = parser.parse_args()
+class DottableDict(dict):
+    def __init__(self, *args, **kwargs):
+        dict.__init__(self, *args, **kwargs)
+        self.__dict__ = self
+    def allowDotting(self, state=True):
+        if state:
+            self.__dict__ = self
+        else:
+            self.__dict__ = dict()
 
 # load global parameters
-with open("global.config", 'rb') as f:
-    configs_dict = json.load(f)
-
-args.dataset = configs_dict.get("dataset")
-args.model = configs_dict.get("eval_model")
+with open("global.config", 'r', encoding='utf-8') as f:
+    args = DottableDict(json.load(f))
 
 def main():
 

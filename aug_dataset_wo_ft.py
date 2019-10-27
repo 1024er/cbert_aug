@@ -11,6 +11,8 @@ import random
 from tqdm import tqdm, trange
 import json
 
+import train_text_classifier
+
 import numpy as np
 import torch
 from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
@@ -20,8 +22,6 @@ from pytorch_pretrained_bert.tokenization import BertTokenizer
 from pytorch_pretrained_bert.modeling import BertForMaskedLM
 from pytorch_pretrained_bert.optimization import BertAdam
 from pytorch_pretrained_bert.file_utils import PYTORCH_PRETRAINED_BERT_CACHE
-
-import train_text_classifier
 
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s -   %(message)s',
                     datefmt='%m/%d/%Y %H:%M:%S',
@@ -116,7 +116,7 @@ class AugProcessor(DataProcessor):
                 InputExample(guid=guid, text_a=text_a, label=label))
         return examples
 
-def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer):
+def convert_examples_to_features(epoch_id, examples, label_list, max_seq_length, tokenizer):
     """Loads a data file into a list of `InputBatch`s."""
 
     label_map = {}
@@ -128,7 +128,7 @@ def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer
     dupe_factor = 5
     masked_lm_prob = 0.15
     max_predictions_per_seq = 20
-    rng = random.Random(12345)
+    rng = random.Random(epoch_id)
 
     for (ex_index, example) in enumerate(examples):
         tokens_a = tokenizer.tokenize(example.text_a)
@@ -137,10 +137,8 @@ def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer
         if len(tokens_a) > max_seq_length - 2:
             tokens_a = tokens_a[0:(max_seq_length - 2)]
 
-        # 由于是CMLM，所以需要用标签
         tokens = []
         segment_ids = []
-        # is [CLS]和[SEP] needed ？
         tokens.append("[CLS]")
         segment_ids.append(segment_id)
         for token in tokens_a:
@@ -201,7 +199,7 @@ def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer
             init_ids.append(0)
             input_ids.append(0)
             input_mask.append(0)
-            segment_ids.append(0)  # ?segment_id
+            segment_ids.append(segment_id)  # ?segment_id
 
         assert len(init_ids) == max_seq_length
         assert len(input_ids) == max_seq_length
@@ -268,9 +266,13 @@ def main():
                              "E.g., 0.1 = 10%% of training.")
     parser.add_argument('--seed', type=int, default=42,
                         help="random seed for initialization")
+    parser.add_argument('--sample_num', type=int, default=1,
+                        help="sample number")
+    parser.add_argument('--sample_ratio', type=int, default=7,
+                        help="sample ratio")
 
     args = parser.parse_args()
-    with open("global.config", 'rb') as f:
+    with open("global.config", 'r') as f:
         configs_dict = json.load(f)
 
     args.task_name = configs_dict.get("dataset")
@@ -298,6 +300,7 @@ def run_aug(args, save_every_epoch=False):
     random.seed(args.seed)
     np.random.seed(args.seed)
     torch.manual_seed(args.seed)
+
     os.makedirs(args.output_dir, exist_ok=True)
     processor = processors[task_name]()
     label_list = processor.get_labels(task_name)
@@ -335,20 +338,7 @@ def run_aug(args, save_every_epoch=False):
                          warmup=args.warmup_proportion,t_total=t_total)
 
     global_step = 0
-    train_features = convert_examples_to_features(
-        train_examples, label_list, args.max_seq_length, tokenizer)
-    logger.info("***** Running training *****")
-    logger.info("  Num examples = %d", len(train_examples))
-    logger.info("  Batch size = %d", args.train_batch_size)
-    logger.info("  Num steps = %d", num_train_steps)
-    all_init_ids = torch.tensor([f.init_ids for f in train_features], dtype=torch.long)
-    all_input_ids = torch.tensor([f.input_ids for f in train_features], dtype=torch.long)
-    all_input_mask = torch.tensor([f.input_mask for f in train_features], dtype=torch.long)
-    all_segment_ids = torch.tensor([f.segment_ids for f in train_features], dtype=torch.long)
-    all_masked_lm_labels = torch.tensor([f.masked_lm_labels for f in train_features], dtype=torch.long)
-    train_data = TensorDataset(all_init_ids, all_input_ids, all_input_mask, all_segment_ids, all_masked_lm_labels)
-    train_sampler = RandomSampler(train_data)
-    train_dataloader = DataLoader(train_data, sampler=train_sampler, batch_size=args.train_batch_size)
+        
 
     save_model_dir = os.path.join(PYTORCH_PRETRAINED_BERT_CACHE, task_name)
     if not os.path.exists(save_model_dir):
@@ -363,6 +353,21 @@ def run_aug(args, save_every_epoch=False):
 
     for e in trange(int(args.num_train_epochs), desc="Epoch"):
         avg_loss = 0.
+        
+        train_features = convert_examples_to_features(
+            e+1, train_examples, label_list, args.max_seq_length, tokenizer)
+        logger.info("***** Running training *****")
+        logger.info("  Num examples = %d", len(train_examples))
+        logger.info("  Batch size = %d", args.train_batch_size)
+        logger.info("  Num steps = %d", num_train_steps)
+        all_init_ids = torch.tensor([f.init_ids for f in train_features], dtype=torch.long)
+        all_input_ids = torch.tensor([f.input_ids for f in train_features], dtype=torch.long)
+        all_input_mask = torch.tensor([f.input_mask for f in train_features], dtype=torch.long)
+        all_segment_ids = torch.tensor([f.segment_ids for f in train_features], dtype=torch.long)
+        all_masked_lm_labels = torch.tensor([f.masked_lm_labels for f in train_features], dtype=torch.long)
+        train_data = TensorDataset(all_init_ids, all_input_ids, all_input_mask, all_segment_ids, all_masked_lm_labels)
+        train_sampler = RandomSampler(train_data)
+        train_dataloader = DataLoader(train_data, sampler=train_sampler, batch_size=args.train_batch_size)
 
         for step, batch in enumerate(train_dataloader):
             model.train()
@@ -387,24 +392,20 @@ def run_aug(args, save_every_epoch=False):
             init_ids, _, input_mask, segment_ids, _ = batch
             input_lens = [sum(mask).item() for mask in input_mask]
             #masked_idx = np.squeeze([np.random.randint(1, l-1, 1) for l in input_lens])
-            masked_idx = np.squeeze([np.random.randint(0, l, max(l//7,2)) for l in input_lens])
+            masked_idx = np.squeeze([np.random.randint(0, l, max(l//args.sample_ratio,2)) for l in input_lens])
             for ids, idx in zip(init_ids,masked_idx):
                 ids[idx] = MASK_id
             predictions = model(init_ids, segment_ids, input_mask)
+            predictions = torch.nn.functional.softmax(predictions, dim=2)
             for ids, idx, preds, seg in zip(init_ids, masked_idx, predictions, segment_ids):
-                #pred = torch.argsort(pred)[:,-e-1][idx]
-                '''
-                pred = torch.argsort(preds)[:,-1][idx]
-                ids[idx] = pred
-                new_str = tokenizer.convert_ids_to_tokens(ids.cpu().numpy())
-                new_str = rev_wordpiece(new_str)
-                tsv_writer.writerow([new_str, seg[0].item()])
-                '''
-                pred = torch.argsort(preds)[:, -2][idx]
-                ids[idx] = pred
-                new_str = tokenizer.convert_ids_to_tokens(ids.cpu().numpy())
-                new_str = rev_wordpiece(new_str)
-                tsv_writer.writerow([new_str, seg[0].item()])
+                #pred = torch.argsort(preds)[:, -2][idx]
+                preds = torch.multinomial(preds, args.sample_num, replacement=True)[idx]
+                preds = torch.transpose(preds, 0, 1)
+                for pred in preds:
+                    ids[idx] = pred
+                    new_str = tokenizer.convert_ids_to_tokens(ids.cpu().numpy())
+                    new_str = rev_wordpiece(new_str)
+                    tsv_writer.writerow([new_str, seg[0].item()])
             torch.cuda.empty_cache()
         predictions = predictions.detach().cpu()
         torch.cuda.empty_cache()
