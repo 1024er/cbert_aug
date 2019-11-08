@@ -30,5 +30,21 @@ We upload the runing log with dropout=0.5 for all datasets, this is very close t
 |                                | +cbert | 43.1 | 82.5 | 94.1 | 88.0 | 78.8 | 91.4 | 79.65 | +2.25     |
 
 
+If you have any question, please open an issue.
+
+Please cite this paper if you use this method or codes:
+```sh
+@inproceedings{wu2019conditional,
+  title={Conditional BERT Contextual Augmentation},
+  author={Wu, Xing and Lv, Shangwen and Zang, Liangjun and Han, Jizhong and Hu, Songlin},
+  booktitle={International Conference on Computational Science},
+  pages={84--95},
+  year={2019},
+  organization={Springer}
+}
+```
+
+
+
 
 The classifier code is from <https://github.com/pfnet-research/contextual_augmentation>, thanks to the author.
