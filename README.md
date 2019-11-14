@@ -9,11 +9,11 @@ You can run the code by:
 
 1.finetune bert on each dataset before run aug_dataset.py
 
-  python finetune_dataset.py
+  ```python finetune_dataset.py```
   
 2.then load fine-tuned bert in aug_dataset.py
 
-  python aug_dataset.py
+  ```python aug_dataset.py```
 
 The hyperparameters of the models and training were selected by a grid-search using baseline models without data augmentation in each task’s validation set individually.
 
