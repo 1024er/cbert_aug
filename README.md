@@ -11,7 +11,7 @@ You can run the code by:
 
   ```python cbert_finetune.py```
   
-  you can use "python cbert_finetune.py --task_name='TREC'" to change the task you want to perform, if can also set your own parameters in the same way to acquire different results.
+  you can use *python cbert_finetune.py --task_name='TREC'* to change the task you want to perform, if can also set your own parameters in the same way to acquire different results.
   
 2.then load fine-tuned bert in cbert_augdata.py
 
