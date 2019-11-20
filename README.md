@@ -17,7 +17,7 @@ You can run the code by:
 
   ```python cbert_augdata.py```
   
-  notice that if you want to change the default dataset used in original code, you have to alter the parameter "dataset" in global.config firstly.
+  notice that if you want to change the default dataset used in original code, you have to alter the parameter "dataset" in *global.config* firstly.
 
 The hyperparameters of the models and training were selected by a grid-search using baseline models without data augmentation in each task’s validation set individually.
 
