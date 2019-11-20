@@ -1,5 +1,5 @@
 # cbert_aug
-We arrange the original code of cbert from 'https://github.com/1024er/cbert_aug.git'. 
+We arrange the original code of cbert from https://github.com/1024er/cbert_aug.git. 
 Our original implementation was two-stage, for convenience, we rewrite the code. 
 
 The *global.config* contains the global configuration for bert and classifier.
