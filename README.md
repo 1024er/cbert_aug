@@ -1,4 +1,9 @@
 # cbert_aug
+
+Thanks @liuyaxin 's effort to rewrite the code with huggingface's latest transformer library.
+If you want to reproduce the results in paper, you can switch to the develop branch.
+
+
 We arrange the original code of cbert from https://github.com/1024er/cbert_aug.git. 
 Our original implementation was two-stage, for convenience, we rewrite the code. 
 
