@@ -197,7 +197,7 @@ def extract_features(tokens_a, tokens_label, max_seq_length, tokenizer):
     masked_lm_probs = 0.15
     max_predictions_per_seq = 20
     rng = random.Random(12345)
-    original_masked_lm_labels = [-1] * max_seq_length
+    original_masked_lm_labels = [-100] * max_seq_length
     (output_tokens, masked_lm_positions, 
     masked_lm_labels) = create_masked_lm_predictions(
             tokens, masked_lm_probs, original_masked_lm_labels, max_predictions_per_seq, rng, tokenizer)
