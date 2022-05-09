@@ -133,3 +133,5 @@ dmypy.json
 
 # Repo specific
 cbert_model/
+aug_data_*/
+result/
