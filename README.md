@@ -5,9 +5,12 @@ Build docker environment:
 docker build -f docker/Dockerfile -t cbert_cuda110 .
 ```
 
-Connect interactively to instance:
+Mount `code` directory and connect interactively to instance:
 ```
-docker run --gpus all -it cbert_cuda110 /bin/bash
+docker run \
+--gpus all \
+--mount type=bind,source="$(pwd)"/code,target=/cbert/code \
+-it cbert_cuda110 /bin/bash
 ```
 
 Fine tune BERT on Subjective/Objective dataset (takes ~20 minutes):
@@ -15,13 +18,16 @@ Fine tune BERT on Subjective/Objective dataset (takes ~20 minutes):
 ```
 python3 cbert_finetune.py
 ```
-Model is saved to `cbert_model`.
+Model is saved to `cbert_model/`.
 
-Generate augmented data:
+Generate augmented data for Subjective/Objective dataset:
 ```
-python3 cbert_augdata.py
+python3 cbert_augdata.py --num_train_epochs 1
 ```
-The data are output to `aug_data/`
+The data are output to `aug_data_<SUFFIX>/subj`, where `<SUFFIX>` depends on the
+parameters used for the data augmentation.
+- `train_origin.tsv`: unaugmented data
+- `train.tsv`: unaugmented data + augmented data (appended)
 
 # Original README
 

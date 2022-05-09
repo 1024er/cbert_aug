@@ -3,7 +3,6 @@ from nvidia/cuda:11.0.3-cudnn8-devel-ubuntu20.04
 WORKDIR /cbert
 
 COPY requirements.txt requirements.txt
-COPY code code
 
 # Disable nvidia repos as their GPG key isn't recognized
 RUN mv /etc/apt/sources.list.d/cuda.list /etc/apt/sources.list.d/cuda.list.bak
@@ -22,3 +21,4 @@ RUN apt-get update &&\
 
 
 RUN pip install -r requirements.txt
+WORKDIR /cbert/code
