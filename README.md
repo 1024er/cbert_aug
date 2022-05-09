@@ -1,4 +1,29 @@
-# cbert_aug
+# Changes to make reproducible
+
+Build docker environment:
+```
+docker build -f docker/Dockerfile -t cbert_cuda110 .
+```
+
+Connect interactively to instance:
+```
+docker run --gpus all -it cbert_cuda110 /bin/bash
+```
+
+Fine tune BERT on Subjective/Objective dataset (takes ~20 minutes):
+(see file for other options)
+```
+python3 cbert_finetune.py
+```
+Model is saved to `cbert_model`.
+
+Generate augmented data:
+```
+python3 cbert_augdata.py
+```
+The data are output to `aug_data/`
+
+# Original README
 
 Thanks @liuyaxin 's effort to rewrite the code with huggingface's latest transformer library.
 If you want to reproduce the results in paper, you can switch to the develop branch.
