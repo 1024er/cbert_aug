@@ -128,5 +128,10 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# Vim
+*.swp
+
 # Repo specific
 cbert_model/
+aug_data_*/
+result/
