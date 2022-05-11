@@ -1,4 +1,35 @@
-# cbert_aug
+# Changes to make reproducible
+
+Build docker environment:
+```
+docker build -f docker/Dockerfile -t cbert_cuda110 .
+```
+
+Mount `code` directory and connect interactively to instance:
+```
+docker run \
+--gpus all \
+--mount type=bind,source="$(pwd)"/code,target=/cbert/code \
+-it cbert_cuda110 /bin/bash
+```
+
+Fine tune BERT on Subjective/Objective dataset (takes ~20 minutes):
+(see file for other options)
+```
+python3 cbert_finetune.py
+```
+Model is saved to `cbert_model/`.
+
+Generate augmented data for Subjective/Objective dataset:
+```
+python3 cbert_augdata.py --num_train_epochs 1
+```
+The data are output to `aug_data_<SUFFIX>/subj`, where `<SUFFIX>` depends on the
+parameters used for the data augmentation.
+- `train_origin.tsv`: unaugmented data
+- `train.tsv`: unaugmented data + augmented data (appended)
+
+# Original README
 
 Thanks @liuyaxin 's effort to rewrite the code with huggingface's latest transformer library.
 If you want to reproduce the results in paper, you can switch to the develop branch.
