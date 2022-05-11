@@ -1,12 +1,12 @@
-from nvidia/cuda:11.0.3-cudnn8-devel-ubuntu20.04 
+from nvidia/cuda:11.0.3-cudnn8-devel-ubuntu20.04
 
 WORKDIR /cbert
 
 COPY requirements.txt requirements.txt
 
 # Disable nvidia repos as their GPG key isn't recognized
-RUN mv /etc/apt/sources.list.d/cuda.list /etc/apt/sources.list.d/cuda.list.bak
-RUN mv /etc/apt/sources.list.d/nvidia-ml.list /etc/apt/sources.list.d/nvidia-ml.list.bak
+RUN mv -f /etc/apt/sources.list.d/cuda.list /etc/apt/sources.list.d/cuda.list.bak 2>/dev/null; true
+RUN mv -f /etc/apt/sources.list.d/nvidia-ml.list /etc/apt/sources.list.d/nvidia-ml.list.bak 2>/dev/null; true
 
 RUN apt-get update &&\
     apt-get install --no-install-recommends --no-install-suggests -y gnupg2 \
